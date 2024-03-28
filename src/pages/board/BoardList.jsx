@@ -1,4 +1,3 @@
-import Button from "@components/Button";
 import Pagination from "@components/Pagination";
 import Search from "@components/Search";
 import useCustomAxios from "@hooks/useCustomAxios.mjs";
@@ -6,18 +5,12 @@ import BoardListItem from "@pages/board/BoardListItem";
 import { memberState } from "@recoil/user/atoms.mjs";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
-import {
-  Link,
-  useLocation,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
 const BoardList = () => {
   const axios = useCustomAxios();
   const navigate = useNavigate();
-  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
 
   // const fetchBoardList = async () => {
@@ -67,7 +60,7 @@ const BoardList = () => {
       const gotoLogin = confirm(
         "로그인 후 이용 가능합니다.\n로그인 페이지로 이동하시겠습니까?"
       );
-      gotoLogin && navigate("/users/login");
+      gotoLogin && navigate("/user/login");
     } else {
       navigate(`/boards/new`);
     }
@@ -89,8 +82,8 @@ const BoardList = () => {
           <colgroup>
             <col className="w-[10%] sm:w-[10%]" />
             <col className="w-[60%] sm:w-[40%]" />
-            <col className="w-[30%] sm:w-[15%]" />
-            <col className="w-0 sm:w-[10%]" />
+            <col className="w-[20%] sm:w-[15%]" />
+            <col className="w-[10%] sm:w-[10%]" />
             <col className="w-0 sm:w-[25%]" />
           </colgroup>
           <thead>
@@ -98,9 +91,7 @@ const BoardList = () => {
               <th className="p-2 whitespace-nowrap">번호</th>
               <th className="p-2 whitespace-nowrap">제목</th>
               <th className="p-2 whitespace-nowrap">글쓴이</th>
-              <th className="hidden p-2 whitespace-nowrap sm:table-cell">
-                조회
-              </th>
+              <th className="p-2 whitespace-nowrap">조회수</th>
               <th className="hidden p-2 whitespace-nowrap sm:table-cell">
                 작성일
               </th>
@@ -120,6 +111,7 @@ const BoardList = () => {
             {itemList}
           </tbody>
         </table>
+
         <Pagination
           totalPage={data?.pagination.totalPages}
           current={data?.pagination.page}

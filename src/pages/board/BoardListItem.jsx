@@ -14,10 +14,13 @@ function BoardListItem({ item }) {
         className="p-3 truncate indent-4"
         onClick={() => navigate(`/boards/${item._id}`)}
       >
-        <Link to={`/boards/${item._id}`}>{item.title}</Link>
+        <Link to={`/boards/${item._id}`}>
+          {item.title}{" "}
+          <span className="text-gray-500">({item.repliesCount || 0})</span>
+        </Link>
       </td>
       <td className="p-3 truncate">{item.user.name}</td>
-      <td className="p-3 hidden sm:table-cell">{item.viewCount}</td>
+      <td className="p-3 sm:table-cell">{item.views}</td>
       <td className="p-3 hidden sm:table-cell">{item.createdAt}</td>
     </tr>
   );

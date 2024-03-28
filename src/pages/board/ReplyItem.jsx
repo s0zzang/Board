@@ -15,9 +15,9 @@ function ReflyItem({ item }) {
           alt=""
         />
         <a className="text-blue-500" href="">
-          {item.user.name}
+          {item._id} {item.user.name}
         </a>
-        <time className="text-gray-500" dateTime={item.createdAt}>
+        <time className="text-gray-500 ml-auto" dateTime={item.createdAt}>
           {item.createdAt}
         </time>
       </div>
