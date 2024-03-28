@@ -2,15 +2,13 @@ import { memberState } from "@recoil/user/atoms.mjs";
 import axios from "axios";
 import { useRecoilValue } from "recoil";
 
-const API_SERVER = "https://market-lion.koyeb.app/api";
-
 function useCustomAxios() {
   // 로그인 된 사용자 정보
   const user = useRecoilValue(memberState);
 
   // ajax 통신에 사용할 공통 설정 지정
   const instance = axios.create({
-    baseURL: API_SERVER,
+    baseURL: import.meta.env.VITE_API_SERVER,
     timeout: 10000,
     headers: {
       "content-type": "application/json", // request 데이터 타입

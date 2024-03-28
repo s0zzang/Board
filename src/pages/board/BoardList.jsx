@@ -37,7 +37,7 @@ const BoardList = () => {
         params: {
           page: searchParams.get("page"),
           keyword: searchParams.get("keyword"),
-          limit: 10,
+          limit: import.meta.env.VITE_POST_LIMIT,
         },
       }),
     select: (response) => response.data,
