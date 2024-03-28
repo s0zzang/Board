@@ -1,0 +1,17 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .btn {
+    @apply bg-gray-500 text-white font-semibold px-2
+  }
+
+  .btn-primary {
+    @apply bg-blue-500 hover:bg-blue-600
+  }
+
+  .btn-warn {
+    @apply bg-red-500 hover:bg-red-600
+  }
+}
